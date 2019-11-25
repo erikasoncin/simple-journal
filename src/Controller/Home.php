@@ -13,6 +13,7 @@ class Home implements ControllerInterface
     public function __construct(Engine $plates)
     {
         $this->plates = $plates;
+        $plates->addFolder('templates', 'src\View\templates');
     }
 
     public function execute(ServerRequestInterface $request)
