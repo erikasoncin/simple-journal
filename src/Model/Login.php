@@ -7,6 +7,6 @@ class Login
 {
     public function ciao ()
     {
-        echo 'ciao';
+        echo 'ciao a tutti';
     }
 }
