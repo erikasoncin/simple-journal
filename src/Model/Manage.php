@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace SimpleMVC\Model;
 
-use PDO;
+use \PDO;
 use PDOException;
 use League\Plates\Engine;
 
@@ -29,9 +29,9 @@ class Manage {
     function selectLasts3Articles(){
         try {
         $sqlQuery = "SELECT Title, Subheading, Body, Author, Date from Article Order by Date DESC LIMIT 3;";
-        $query = $this->conn->prepareAndExecuteQuery($sqlQuery);
+        $query = $this->conn->prepare($sqlQuery);
         $query->execute();
-        return $result;
+        return $query->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
         print("Errors");
         die(print_r($e));
@@ -47,7 +47,7 @@ class Manage {
         $sqlQuery = "SELECT * from Article where Author= :idAuth;";
         $query = $this->conn->prepare($sqlQuery);
         $query->execute([':idAuth' => $idAuth]);
-        return $id = $this->conn->lastInsertId();
+        return $query->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
         print("Errors");
         die(print_r($e));

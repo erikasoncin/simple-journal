@@ -22,6 +22,6 @@ class Home implements ControllerInterface
     public function execute(ServerRequestInterface $request)
     {
         $articoli = $this->home->selectLasts3Articles();
-        echo $this->plates->render('home');
+        echo $this->plates->render('home',['article' => $articoli]);
     }
 }
