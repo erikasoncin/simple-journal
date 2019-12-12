@@ -5,22 +5,22 @@ namespace SimpleMVC\Controller;
 
 use League\Plates\Engine;
 use Psr\Http\Message\ServerRequestInterface;
-use SimpleMVC\Model\Login;
+use SimpleMVC\Model;
 
 class LoginController implements ControllerInterface
 {
     protected $plates;
-    protected $login;
+    protected $man;
 
-    public function __construct(Engine $plates, Login $login)
+    public function __construct(Engine $plates, Manage $man )
     {
-        $this->login = $login;
         $this->plates = $plates;
+        $this->man = $man;
     }
 
     public function execute(ServerRequestInterface $request)
     {
-        echo $this->plates->render('loginView');
-        echo $this->login->ciao();
+        $welcome = $this->man->welcome();
+        echo $this->plates->render('loginView', ['welcome' => $welcome]);
     }
 }

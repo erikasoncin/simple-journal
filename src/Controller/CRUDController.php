@@ -7,21 +7,20 @@ use League\Plates\Engine;
 use Psr\Http\Message\ServerRequestInterface;
 use SimpleMVC\Model\Manage;
 
-class Home implements ControllerInterface
+class CRUDController implements ControllerInterface
 {
     protected $plates;
-    protected $home;
+    protected $ml;
 
-    public function __construct(Engine $plates, Manage $home)
+    public function __construct(Engine $plates, CRUD $ml)
     {
         $this->plates = $plates;
-        $this->home = $home;
-        
+        $this->ml = $ml;
     }
 
     public function execute(ServerRequestInterface $request)
     {
-        $articoli = $this->home->selectLasts3Articles();
-        echo $this->plates->render('home');
+        $articles = $this->ml->selectAllFromArticle();
+        echo $this->plates->render('CRUDView',['articles' => $articles]);
     }
 }
