@@ -23,4 +23,11 @@ class LoginController implements ControllerInterface
         $welcome = $this->log->checkUser('','');
         echo $this->plates->render('loginView');
     }
+
+    private function logOut():void{
+        unset($_SESSION['email']); 
+        session_unset();
+        session_destroy();
+        header('Location:index.php');
+    }
 }
