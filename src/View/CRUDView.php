@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group row">
                     <label for="exampleInputEmail1">Body: </label>
-                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="7" ><?= $article['Body']?></textarea>
+                    <textarea name ="body" class="form-control rounded-0" id="exampleFormControlTextarea1" rows="7" ><?= $article['Body']?></textarea>
                 </div>
                 <div class="form-group row">
                     <label for="exampleInputEmail1">Date: </label>
@@ -36,8 +36,8 @@
                     <label for="exampleInputEmail1">Author: </label>
                     <input type="text" class="form-control" name="author" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?= $article['Author']?>">
 
-                    <button type="submit" class="btn btn-primary">Delete</button>
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <input type="submit" name ="delete" class="btn btn-primary" value="Delete">
+                    <input type="submit" name="update" class="btn btn-primary" value="Update">
             </div>
         </div>
     </div>    
