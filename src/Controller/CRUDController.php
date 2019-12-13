@@ -10,17 +10,17 @@ use SimpleMVC\Model\Manage;
 class CRUDController implements ControllerInterface
 {
     protected $plates;
-    protected $ml;
+    protected $crud;
 
-    public function __construct(Engine $plates, CRUD $ml)
+    public function __construct(Engine $plates, Manage $crud)
     {
         $this->plates = $plates;
-        $this->ml = $ml;
+        $this->crud = $crud;
     }
 
     public function execute(ServerRequestInterface $request)
     {
-        $articles = $this->ml->selectAllFromArticle();
+        $articles = $this->crud->selectAllArticle(1);
         echo $this->plates->render('CRUDView',['articles' => $articles]);
     }
 }

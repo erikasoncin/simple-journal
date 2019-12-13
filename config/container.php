@@ -16,3 +16,4 @@ return [
         return new PDO($c->get('dsn'),$c->get('user'),$c->get('password'));
     }
 ];
+

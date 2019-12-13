@@ -25,6 +25,29 @@ class Manage {
         }
     }
 
+    function checkUser($email, $password){
+        //$pwd = password_hash($post['pwd'], PASSWORD_DEFAULT);
+        try {
+          $sqlQuery = "SELECT Email, Name, Password FROM User WHERE Email=:email AND Password=:password;";
+          $query = $this->conn->prepare($sqlQuery);
+          $query->execute([':email' => ''.$email.'', ':password' => ''.$password.'']);
+          $result = $query->fetchAll();
+        } catch (PDOException $e) {
+          print("Error sending image data.");
+          die(print_r($e));
+        }
+        // password_verify($post['pwd'], $dataToCheck['pwd'];
+        if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+          if ($email == $result[0]['email'] && $password == $result[0]['password']){
+              $_SESSION['email'] = $result[0]['Name'];
+              return true;
+          } else {
+              return false;
+          }
+        } else {
+          return false;
+        }
+    }
 
     function selectLasts3Articles(){
         try {
@@ -91,12 +114,3 @@ class Manage {
     }
 
 }
-// $dsn = 'mysql:dbname=testdb;host=127.0.0.1';
-// $user = 'dbuser';
-// $password = 'dbpass';
-// try {
-//  $pdo = new PDO($dsn, $user, $password);
-// } catch (PDOException $e) {
-//  echo 'Connection failed: ' . $e->getMessage();
-// exit();
-// }
