@@ -51,7 +51,9 @@ class Manage {
 
     function selectLasts3Articles(){
         try {
-        $sqlQuery = "SELECT Title, Subheading, Body, Author, Date from Article Order by Date DESC LIMIT 3;";
+        $sqlQuery = "SELECT a.Title, a.Subheading, a.Body, a.Date, u.Name from Article as a 
+        INNER JOIN User AS u ON u.Id = a.Author
+        Order by a.Date DESC LIMIT 3;";
         $query = $this->conn->prepare($sqlQuery);
         $query->execute();
         return $query->fetchAll(PDO::FETCH_ASSOC);
