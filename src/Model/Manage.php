@@ -6,26 +6,39 @@ use \PDO;
 use PDOException;
 use League\Plates\Engine;
 
-class Manage {
+
+
+class Manage
+{
 
   private $conn;
 
-    function __construct(PDO $pdo){
+
+    function __construct(PDO $pdo)
+    {
         $this->conn = $pdo;
     }
 
-    function prepareAndExecuteQuery(string $sqlQuery){
-        try {
-        $query = $this->conn->prepare($sqlQuery);
-        $query->execute();
-        return $query->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-        print("Error executing query, please check your data input.");
-        die();
+
+    function executeQuery (string $sql, string $method, $optionalParameters) : ?array
+    {
+        try
+        {
+            $query = $this->conn->prepare($sql);
+            $query->execute($optionalParameters);
+            return ($method === 'GET') ? $query->fetchAll(PDO::FETCH_ASSOC) : null;
+        }
+
+        catch (PDOException $e)
+        {
+            die("Error executing query, please check your data input.");
+            return null;
         }
     }
 
-    function checkUser($email, $password){
+
+
+    /*function checkUser($email, $password){
         //$pwd = password_hash($post['pwd'], PASSWORD_DEFAULT);
         try {
           $sqlQuery = "SELECT Email, Name, Password FROM User WHERE Email=:email AND Password=:password;";
@@ -46,36 +59,6 @@ class Manage {
           }
         } else {
           return false;
-        }
-    }
-
-    function selectLasts3Articles(){
-        try {
-        $sqlQuery = "SELECT a.Title, a.Subheading, a.Body, a.Date, u.Name from Article as a 
-        INNER JOIN User AS u ON u.Id = a.Author
-        Order by a.Date DESC LIMIT 3;";
-        $query = $this->conn->prepare($sqlQuery);
-        $query->execute();
-        return $query->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-        print("Errors");
-        die(print_r($e));
-        }
-    }
-
-    public function welcome(){
-        return "erika";
-    }
-
-    function selectAllArticle(int $idAuth){
-        try {
-        $sqlQuery = "SELECT * from Article where Author= :idAuth;";
-        $query = $this->conn->prepare($sqlQuery);
-        $query->execute([':idAuth' => $idAuth]);
-        return $query->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-        print("Errors");
-        die(print_r($e));
         }
     }
 
@@ -113,6 +96,6 @@ class Manage {
         print("Errors");
         die(print_r($e));
         }
-    }
+    }*/
 
 }

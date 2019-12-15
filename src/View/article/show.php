@@ -1,9 +1,4 @@
-<?php $this->layout('/templates/layout', ['title' => 'Homepage']) ?>
-
-<h1>Home page</h1>
-<h2>Benvenuto <?php echo $welcome ?></h2>
-<p>SimpleMVC è un progetto didattico per insegnare le basi dell'architettura</p>
-
+<?php $this->layout('/templates/layout', ['title' => 'Article']) ?>
 
 <?php foreach($articles as $article): ?>
 
@@ -29,4 +24,4 @@
         </div>
     </div>
 
-<?php endforeach ?>
+    <?php endforeach ?>

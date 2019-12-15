@@ -7,27 +7,28 @@ use League\Plates\Engine;
 use Psr\Http\Message\ServerRequestInterface;
 use SimpleMVC\Model\Manage;
 
-class LoginController implements ControllerInterface
+class Login implements ControllerInterface
 {
     protected $plates;
-    protected $log;
+    protected $crud;
 
-    public function __construct(Engine $plates, Manage $log )
+    public function __construct(Engine $plates, Manage $crud )
     {
         $this->plates = $plates;
-        $this->log = $log;
+        $this->crud = $crud;
     }
 
     public function execute(ServerRequestInterface $request)
     {
-        $welcome = $this->log->checkUser('','');
-        echo $this->plates->render('loginView');
+        //$welcome = $this->crud->checkUser('','');
+        echo $this->plates->render('login');
     }
 
-    private function logOut():void{
-        unset($_SESSION['email']); 
+    private function logout() : void
+    {
+        unset($_SESSION['email']);
         session_unset();
         session_destroy();
-        header('Location:index.php');
+        header('Location: /');
     }
 }

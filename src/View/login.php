@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Login']) ?>
+<?php $this->layout('/templates/layout', ['title' => 'Login']) ?>
 
 
 <form>
@@ -19,7 +19,7 @@
                     <label class="form-check-label" for="exampleCheck1">Check me out</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
-            </div>    
-        </div>        
-    </div>            
+            </div>
+        </div>
+    </div>
 </form>
