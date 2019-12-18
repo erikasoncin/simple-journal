@@ -86,7 +86,7 @@ class Manage
         }
     }
 
-    function deleteArticle(string $title, string $subhead, string $body, int $idAuth, int $id){
+    function deleteArticle(int $id){
         try {
             $sqlQuery = "DELETE from Article where id=:id;";
             $query = $this->conn->prepare($sqlQuery);
