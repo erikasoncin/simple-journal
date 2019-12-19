@@ -14,6 +14,14 @@ class Add extends Article implements ControllerInterface
 {
     public function execute(ServerRequestInterface $request)
     {
-        //$this->crud->executeQuery(ADD_ARTICLE, 'POST');
+        //var_dump($request->getParsedBody()['title']);
+
+        $articleData = [$request->getParsedBody()['title'], $request->getParsedBody()['subheading'], $request->getParsedBody()['body'], 
+        $request->getParsedBody()['author']];
+        $this->showPage('dashboard', ADD_ARTICLE, 'POST', $articleData);
+       
+
+        //$this->showPage('dashboard', DELETE_ARTICLE, 'POST', substr($request->getUri()->getPath(), 8));
+        header('Location: /dashboard');
     }
 }

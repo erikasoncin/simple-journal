@@ -1,7 +1,7 @@
 <?php $this->layout('/templates/layout', ['title' => 'Add Article']) ?>
 
 
-<form method="POST">
+<form method="POST" action="/executeadd">
     <div class="container h-100">
         <div class="row h-100 justify-content-center align-items-center">
             <div class="col-10 col-md-8 col-lg-6">
@@ -31,22 +31,11 @@
                     <label for="exampleInputEmail1">Author: </label>
                     <input type="text" class="form-control" name="author" id="exampleInputEmail1" aria-describedby="emailHelp" value="">
 
-<<<<<<< Updated upstream:src/View/article/add.php
-                    <button class="btn btn-success" onclick="window.location.href='/add/execute'">My Articles</button>
-=======
-                    <button type="submit" name="salva" class="btn btn-primary">Salva</button>
->>>>>>> Stashed changes:src/View/addArticle.php
+                    <input type="submit" onclick="window.location.href='/executeadd'" value="Publish"/>
             </div>
         </div>
     </div>
 
 </form>
 
-<?php
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST')
-{
-    echo 'ciao';
-}
-
- ?>

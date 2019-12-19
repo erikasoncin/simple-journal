@@ -26,6 +26,9 @@ class Manage
         {
             $query = $this->conn->prepare($sql);
             $query->execute($optionalParameters);
+
+            var_dump($optionalParameters);
+            return "";
             return ($method === 'GET') ? $query->fetchAll(PDO::FETCH_ASSOC) : null;
         }
 

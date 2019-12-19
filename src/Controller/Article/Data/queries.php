@@ -12,11 +12,11 @@ define ("GET_ARTICLE", "SELECT a.Id, a.Title, a.Subheading, a.Body, a.Date, u.Na
                         INNER JOIN User AS u ON u.Id = a.Author
                         where a.Id = :0;");
 
-define ("ADD_ARTICLE", "Insert INTO Article(Title, Subheading, Body, Author, Date)
+define ("ADD_ARTICLE", "INSERT INTO Article(Title, Subheading, Body, Author, Date)
                         VALUES (:0, :1, :2, :3, NOW());");
 
 define ("UPDATE_ARTICLE", "UPDATE Article
-                          SET Title = :title, Subheading = :subhead, Body = :body, Date = NOW())
-                          WHERE Author = :idAuth AND id = :id;");
+                          SET Title = :0, Subheading = :1, Body = :2, Date = NOW())
+                          WHERE Author = :3 AND id =:4;");
 
 define ("DELETE_ARTICLE", "DELETE from Article where id = :0;");
