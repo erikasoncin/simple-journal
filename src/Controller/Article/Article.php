@@ -21,9 +21,13 @@ class Article
 
     public function showPage (string $page, string $sql, string $method, ...$options) : void
     {
-        foreach ($options as $key => $value)
-            $optionalParameters = [":{$key}" => $value];
+        //var_dump($options);
+        $optionalParameters;
 
+        foreach ($options as $key => $value)
+            $optionalParameters[":{$key}"] =  $value;
+            
+       
         $articles = $this->crud->executeQuery($sql, $method, $optionalParameters);
         echo $this->plates->render($page, ['articles' => $articles]);
     }

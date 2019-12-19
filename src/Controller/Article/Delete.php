@@ -14,6 +14,9 @@ class Delete extends Article implements ControllerInterface
     public function execute(ServerRequestInterface $request)
     {
         $this->showPage('dashboard', DELETE_ARTICLE, 'POST', substr($request->getUri()->getPath(), 8));
-        header('Location: /dashboard');
+        echo '<script type="text/javascript">
+        alert("Article deleted!")
+        window.location.href = "/dashboard"
+        </script>';
     }
 }

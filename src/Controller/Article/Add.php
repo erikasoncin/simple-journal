@@ -14,14 +14,14 @@ class Add extends Article implements ControllerInterface
 {
     public function execute(ServerRequestInterface $request)
     {
-        //var_dump($request->getParsedBody()['title']);
 
-        $articleData = [$request->getParsedBody()['title'], $request->getParsedBody()['subheading'], $request->getParsedBody()['body'], 
-        $request->getParsedBody()['author']];
-        $this->showPage('dashboard', ADD_ARTICLE, 'POST', $articleData);
-       
+        $this->showPage('dashboard', ADD_ARTICLE, 'POST', $request->getParsedBody()['title'],$request->getParsedBody()['subheading'],
+        $request->getParsedBody()['body'], $request->getParsedBody()['author']);
+        echo '<script type="text/javascript">
+        alert("Article added")
+        window.location.href = "/add"
+        </script>';
 
         //$this->showPage('dashboard', DELETE_ARTICLE, 'POST', substr($request->getUri()->getPath(), 8));
-        header('Location: /dashboard');
     }
 }

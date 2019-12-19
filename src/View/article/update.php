@@ -10,7 +10,7 @@
 
 <?php foreach($articles as $article): ?>
 
-    <form method="POST" action="/executeUpdate/">
+    <form method="POST" action="/executeupdate">
         <div class="container h-100">
             <div class="row h-100 justify-content-center align-items-center">
                 <div class="col-10 col-md-8 col-lg-6">
@@ -30,13 +30,13 @@
                     </div>
                     <div class="form-group row">
                         <label for="exampleInputEmail1">Date: </label>
-                        <input type="text" class="form-control" name="date" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?= $article['Date']?>">
+                        <p><?= $article['Date']?>"</p>
                     </div>
                     <div class="form-group row">
                         <label for="exampleInputEmail1">Author: </label>
                         <input type="text" class="form-control" name="author" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?= $article['Author']?>">
 
-                        <input type="button" onclick="window.location.href='/executeUpdate/'" value="Publish"/>
+                        <input type="button" onclick="window.location.href='/executeupdate'" value="Publish"/>
                 </div>
             </div>
         </div>
