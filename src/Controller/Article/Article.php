@@ -6,14 +6,14 @@ namespace SimpleMVC\Controller\Article;
 
 use League\Plates\Engine;
 use Psr\Http\Message\ServerRequestInterface;
-use SimpleMVC\Model\Manage;
+use SimpleMVC\Model\CRUD;
 
 class Article
 {
     protected $plates;
     protected $crud;
 
-    public function __construct(Engine $plates, Manage $crud)
+    public function __construct(Engine $plates, CRUD $crud)
     {
         $this->plates = $plates;
         $this->crud = $crud;

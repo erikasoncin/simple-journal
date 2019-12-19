@@ -7,7 +7,7 @@ require 'Data/queries.php';
 
 use League\Plates\Engine;
 use Psr\Http\Message\ServerRequestInterface;
-use SimpleMVC\Model\Manage;
+use SimpleMVC\Model\CRUD;
 
 class Show extends Article implements ControllerInterface
 {

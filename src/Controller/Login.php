@@ -5,14 +5,14 @@ namespace SimpleMVC\Controller;
 
 use League\Plates\Engine;
 use Psr\Http\Message\ServerRequestInterface;
-use SimpleMVC\Model\Manage;
+use SimpleMVC\Model\CRUD;
 
 class Login implements ControllerInterface
 {
     protected $plates;
     protected $crud;
 
-    public function __construct(Engine $plates, Manage $crud )
+    public function __construct(Engine $plates, CRUD $crud )
     {
         $this->plates = $plates;
         $this->crud = $crud;

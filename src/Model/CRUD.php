@@ -8,7 +8,7 @@ use League\Plates\Engine;
 
 
 
-class Manage
+class CRUD
 {
 
   private $conn;
