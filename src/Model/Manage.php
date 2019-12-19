@@ -36,13 +36,9 @@ class Manage
         {
             die("Error executing query, please check your data input.");
             return null;
-        }
-    }
-
-
-
-    /*function checkUser($email, $password){
-        //$pwd = password_hash($post['pwd'], PASSWORD_DEFAULT);
+		}
+	}
+		function checkUser($email, $password){
         try {
           $sqlQuery = "SELECT Email, Name, Password FROM User WHERE Email=:email AND Password=:password;";
           $query = $this->conn->prepare($sqlQuery);
@@ -53,10 +49,12 @@ class Manage
           die(print_r($e));
         }
         // password_verify($post['pwd'], $dataToCheck['pwd'];
-        if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
           if ($email == $result[0]['email'] && $password == $result[0]['password']){
-              $_SESSION['email'] = $result[0]['Name'];
-              return true;
+              //if ($email == 'erika@gmail.com' && $password == '12345678'){
+			  $_SESSION['email'] = $result[0]['Name'];
+			  header("location: https://www.youtube.com/");
+              //return true;
           } else {
               return false;
           }
@@ -64,7 +62,7 @@ class Manage
           return false;
         }
     }
-
+/*
     function insertNewArticle(string $title, string $subhead, string $body, int $idAuth){
         try {
             $sqlQuery = "Insert INTO Article(Title, Subheading, Body, Author, Date) VALUES (:title, :subhead, :body, :idAuth, NOW());";
@@ -101,4 +99,5 @@ class Manage
         }
     }*/
 
+	
 }

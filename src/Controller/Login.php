@@ -20,7 +20,8 @@ class Login implements ControllerInterface
 
     public function execute(ServerRequestInterface $request)
     {
-        //$welcome = $this->crud->checkUser('','');
+        $welcome = $this->crud->checkUser($_POST['email'],$_POST['password']);
+
         echo $this->plates->render('login');
     }
 
