@@ -1,4 +1,13 @@
 <?php $this->layout('/templates/layout', ['title' => 'Manage']) ?>
+
+<?php
+
+    if ( ! isset($_SESSION['username']))
+        header ('Location: /login');
+
+ ?>
+
+
 <div class="container">
   <div class="row">
     <div class="col text-center">

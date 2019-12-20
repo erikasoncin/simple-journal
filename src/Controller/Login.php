@@ -5,31 +5,32 @@ namespace SimpleMVC\Controller;
 
 use League\Plates\Engine;
 use Psr\Http\Message\ServerRequestInterface;
-use SimpleMVC\Model\Manage;
+use SimpleMVC\Model\User;
 
 class Login implements ControllerInterface
 {
     protected $plates;
-    protected $crud;
+    protected $user;
 
-    public function __construct(Engine $plates, Manage $crud )
+    public function __construct(Engine $plates, User $user )
     {
         $this->plates = $plates;
-        $this->crud = $crud;
+        $this->user = $user;
     }
 
     public function execute(ServerRequestInterface $request)
     {
-        $welcome = $this->crud->checkUser($_POST['email'],$_POST['password']);
+        $email = trim($request->getParsedBody()['email']);
+        $password = trim($request->getParsedBody()['password']);
 
-        echo $this->plates->render('login');
-    }
+        if ($this->user->isValidUser($email, $password))
+        {
+            $_SESSION['username'] = $email;
+            header('Location: /dashboard');
+            print_r($_SESSION);
+        }
 
-    private function logout() : void
-    {
-        unset($_SESSION['email']);
-        session_unset();
-        session_destroy();
-        header('Location: /');
+        else
+            header('Location: /login');
     }
 }
