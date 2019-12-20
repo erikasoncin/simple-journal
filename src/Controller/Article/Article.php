@@ -19,11 +19,8 @@ class Article
         $this->crud = $crud;
     }
 
-    public function showPage (string $page, string $sql, string $method, ...$options) : void
+    public function showPage (string $page, string $sql, string $method,  ...$options) : void
     {
-        //var_dump($options);
-        $optionalParameters;
-
         foreach ($options as $key => $value)
             $optionalParameters[":{$key}"] =  $value;
             

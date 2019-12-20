@@ -14,11 +14,10 @@ class Add extends Article implements ControllerInterface
 {
     public function execute(ServerRequestInterface $request)
     {
-
+        $titleUrl = str_replace(' ', '', $request->getParsedBody()['title']);
         $this->showPage('dashboard', ADD_ARTICLE, 'POST', $request->getParsedBody()['title'],$request->getParsedBody()['subheading'],
-        $request->getParsedBody()['body'], $request->getParsedBody()['author']);
+        $request->getParsedBody()['body'], $request->getParsedBody()['author'], $titleUrl);
+        
         header('Location: /dashboard');
-
-        //$this->showPage('dashboard', DELETE_ARTICLE, 'POST', substr($request->getUri()->getPath(), 8));
     }
 }

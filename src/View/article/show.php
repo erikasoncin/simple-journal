@@ -7,7 +7,10 @@
             <div class="col-10 col-md-8 col-lg-6">
                 <div class="form-group row">
                     <br>
-                    <h1><a href="/article/<?= $article['Id']?>"><?= $article['Title'] ?></a></h1>
+                    <h1><a href="/article/<?= $article['url']?>"><?= $article['Title'] ?></a></h1>
+                </div>
+                <div>
+                    <h3 name="Id"> <?= $article['Id'] ?> </h2>
                 </div>
                 <div>
                     <h3> <?= $article['Subheading'] ?> </h2>

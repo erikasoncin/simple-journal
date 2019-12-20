@@ -13,6 +13,7 @@ class Show extends Article implements ControllerInterface
 {
     public function execute(ServerRequestInterface $request)
     {
+
         switch ($request->getUri()->getPath())
         {
             case '/':
@@ -24,11 +25,11 @@ class Show extends Article implements ControllerInterface
                 break;
 
             case '/article/' . substr($request->getUri()->getPath(), 9):
-                $this->showPage('article/show', GET_ARTICLE, 'GET', substr($request->getUri()->getPath(), 9));
+                $this->showPage('article/show', GET_ARTICLE, 'GET',$request->getQueryParams()['id']);
                 break;
 
             case '/update/' . substr($request->getUri()->getPath(), 8):
-                $this->showPage('article/update', GET_ARTICLE, 'GET', substr($request->getUri()->getPath(), 8));
+                $this->showPage('article/update', GET_ARTICLE, 'GET', $request->getQueryParams()['id']);
                 break;
 
             case '/add':

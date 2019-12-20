@@ -13,7 +13,7 @@ class Delete extends Article implements ControllerInterface
 {
     public function execute(ServerRequestInterface $request)
     {
-        $this->showPage('dashboard', DELETE_ARTICLE, 'POST', substr($request->getUri()->getPath(), 8));
+        $this->showPage('dashboard', DELETE_ARTICLE, 'POST', $request->getQueryParams()['id']);
         header('Location: /dashboard');
     
     }
