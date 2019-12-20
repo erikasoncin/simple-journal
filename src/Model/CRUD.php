@@ -50,8 +50,8 @@ class CRUD
           if ($email == $result[0]['email'] && $password == $result[0]['password']){
               //if ($email == 'erika@gmail.com' && $password == '12345678'){
 			  $_SESSION['email'] = $result[0]['Name'];
-			  header("location: https://www.youtube.com/");
-              //return true;
+			  //header("location: https://www.youtube.com/");
+              return true;
           } else {
               return false;
           }
