@@ -9,7 +9,7 @@ use \PDO;
 use PDOException;
 use League\Plates\Engine;
 use SimpleMVC\Model;
-use SimpleMVC\Model\CRUD;
+use SimpleMVC\Model\User;
 
 
 class CRUDTest extends TestCase
@@ -33,7 +33,7 @@ class CRUDTest extends TestCase
             exit();
             }
         $login = new CRUD($pdo);
-        $this->assertTrue($login->checkUser('erika@gmail.com','12345678'));
+        $this->assertTrue($login->isValidUser('erika@gmail.com','12345678'));
     }
 
     public function testInvalidLogin()
@@ -48,6 +48,6 @@ class CRUDTest extends TestCase
         exit();
         }
         $login = new CRUD($pdo);
-        $this->assertFalse($login->checkUser('lalaland@gmail.com','12345678'));
+        $this->assertFalse($login->isValidUser('lalaland@gmail.com','12345678'));
     }
 }

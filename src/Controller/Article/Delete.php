@@ -16,6 +16,5 @@ class Delete extends Article implements ControllerInterface
         $this->showPage('dashboard', DELETE_ARTICLE, 'POST', $request->getQueryParams()['id']);
         header('Location: /dashboard');
     
->>>>>>> cd9d919b3f2e9025c799c56edc6b7193274d9d6f
     }
 }

@@ -6,7 +6,7 @@ define ("GET_ARTICLES_BY_AUTHOR", "SELECT * from Article where Author = :0;");
 define ("GET_LAST_THREE_ARTICLES", "SELECT a.Id, a.Title, a.Subheading, a.Body, a.Date, a.url, u.Name
                                     from Article as a
                                     INNER JOIN User AS u ON u.Id = a.Author
-                                    Order by a.Date DESC LIMIT 3;");
+                                    Order by a.Date DESC LIMIT 5;");
 
 define ("GET_ARTICLE", "SELECT a.Id, a.Title, a.Subheading, a.Body, a.Date, a.Author, a.url, u.Name
                         from Article as a

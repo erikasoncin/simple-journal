@@ -9,7 +9,6 @@
             <div class="col-10 col-md-8 col-lg-6">
                 <div class="form-group">
                     <h1>Benvenuto</h1>
-                    <?= hash('SHA256', 'ciao') ?>
                     <label for="exampleInputEmail1">Email address</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
                 </div>

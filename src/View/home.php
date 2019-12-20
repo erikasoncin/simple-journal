@@ -1,8 +1,6 @@
 <?php $this->layout('/templates/layout', ['title' => 'Homepage']) ?>
 
-<h1>Home page</h1>
-<h2>Benvenuto </h2>
-<p>SimpleMVC è un progetto didattico per insegnare le basi dell'architettura</p>
+<h1 align="center">Home page</h1>
 
 
 <?php foreach($articles as $article): ?>
