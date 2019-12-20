@@ -1,4 +1,17 @@
+<<<<<<< HEAD
+<?php $this->layout('/templates/layout', ['title' => 'Manage']) ?>
+
+<?php
+
+    if ( ! isset($_SESSION['username']))
+        header ('Location: /login');
+
+ ?>
+
+
+=======
 <?php $this->layout('/templates/layout', ['title' => 'Edit Article']) ?>
+>>>>>>> cd9d919b3f2e9025c799c56edc6b7193274d9d6f
 <div class="container">
   <div class="row">
     <div class="col text-center">

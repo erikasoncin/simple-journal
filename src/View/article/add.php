@@ -1,5 +1,11 @@
 <?php $this->layout('/templates/layout', ['title' => 'Add Article']) ?>
 
+<?php
+
+    if ( ! isset($_SESSION['username']))
+        header ('Location: /login');
+
+ ?>
 
 <form method="POST" action="/executeadd">
     <div class="container h-100">
@@ -28,5 +34,3 @@
     </div>
 
 </form>
-
-

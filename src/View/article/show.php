@@ -1,5 +1,12 @@
 <?php $this->layout('/templates/layout', ['title' => 'Article']) ?>
 
+<?php
+
+    if ( ! isset($_SESSION['username']))
+        header ('Location: /login');
+
+ ?>
+
 <?php foreach($articles as $article): ?>
 
     <div class="container h-100">

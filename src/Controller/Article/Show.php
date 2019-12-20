@@ -35,6 +35,14 @@ class Show extends Article implements ControllerInterface
             case '/add':
                 echo $this->plates->render('/article/add');
                 break;
+
+            case '/login':
+                echo $this->plates->render('login');
+                break;
+
+            case '/logout':
+                echo $this->plates->render('logout');
+                break;
         }
     }
 }

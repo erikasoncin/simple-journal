@@ -7,35 +7,27 @@ use PDOException;
 use League\Plates\Engine;
 
 
-
-class CRUD
+class User extends Manage
 {
-
-  private $conn;
-
-
-    function __construct(PDO $pdo)
+    function isValidUser (string $email, string $password) : bool
     {
-        $this->conn = $pdo;
+        $param = [':0' => $email];
+
+        $user = $this->executeQuery("SELECT Email, Name, Password FROM User WHERE Email = :0;", 'GET', $param);
+/*echo $password;
+echo $user[0]['Password'];
+var_dump($user);
+die();*/
+        return ( ! isset($user[0]['Email']) || ! isset($user[0]['Password']) || $password != $user[0]['Password'] ) ? false : true;
     }
 
 
-    function executeQuery (string $sql, string $method, $optionalParameters) : ?array
-    {
-        try
-        {
-            $query = $this->conn->prepare($sql);
-            $query->execute($optionalParameters);
-            return ($method === 'GET') ? $query->fetchAll(PDO::FETCH_ASSOC) : null;
-        }
 
-        catch (PDOException $e)
-        {
-            die("Error executing query, please check your data input.");
-            return null;
-		}
-	}
-		function checkUser($email, $password){
+
+
+
+    /*function checkUser($email, $password)
+    {
         try {
           $sqlQuery = "SELECT Email, Name, Password FROM User WHERE Email=:email AND Password=:password;";
           $query = $this->conn->prepare($sqlQuery);
@@ -49,16 +41,16 @@ class CRUD
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
           if ($email == $result[0]['email'] && $password == $result[0]['password']){
               //if ($email == 'erika@gmail.com' && $password == '12345678'){
-			  $_SESSION['email'] = $result[0]['Name'];
-			  //header("location: https://www.youtube.com/");
-              return true;
+      			  $_SESSION['email'] = $result[0]['Name'];
+      			  header("location: https://www.youtube.com/");
+                    //return true;
           } else {
               return false;
           }
         } else {
           return false;
         }
-    }
+    }*/
 
-	
+
 }
